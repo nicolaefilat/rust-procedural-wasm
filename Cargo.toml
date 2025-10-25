@@ -1,6 +1,24 @@
 [package]
 name = "rust-procedural-wasm"
 version = "0.1.0"
-edition = "2024"
+authors = ["Your Name <you@example.com>"]
+description = "A sample project with wasm-pack"
+license = "MIT/Apache-2.0"
+repository = "https://github.com/yourgithubusername/hello-wasm"
+edition = "2021"
 
 [dependencies]
+wasm-bindgen = "0.2"
+winit = "0.30.12"
+vulkano = "0.35" # Or the latest version
+vulkano-win = "0.34" # Integration between vulkano and winit
+vulkano-shaders = "0.35.0"
+bytemuck = { version = "1.14", features = ["derive"] }
+log = "0.4"
+env_logger = "0.10"
+
+[build]
+target = "wasm32-unknown-emscripten"
+
+[target.wasm32-unknown-emscripten]
+rustflags = ["-o build/main.html"]
